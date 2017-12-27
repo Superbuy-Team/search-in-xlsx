@@ -1,7 +1,9 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import os, sys
 import xlrd
+import argparse
 
 def find(path, word):
 
@@ -34,8 +36,9 @@ def find(path, word):
 
 
 if __name__ == "__main__":
-    try:
-        find (sys.argv[1],sys.argv[2])
-    except IndexError:
-        print('\tExecute: python searchpy <path> <word>')
-        print('\tEg: python searchpy /home/user/files/ Fox')
+    parser = argparse.ArgumentParser()
+    parser.add_argument("path", help="Path to folder with files.")
+    parser.add_argument("word", help="Word to search in xlsx files.")
+    args = parser.parse_args()
+    
+    find(args.path, args.word)
