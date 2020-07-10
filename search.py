@@ -20,7 +20,7 @@ def find(path, word):
             for ws in wb.sheets():
                 for i, row in enumerate(range(ws.nrows)):
                     for j, col in enumerate(range(ws.ncols)):
-                        if str(word) in str(ws.cell_value(i, j)):
+                        if str(word).lower() in str(ws.cell_value(i, j)).lower():
                             l.append((file,ws.name,row,col))
     if l:
         print ('Word %s found %d times in:' %(word,len(l)))
